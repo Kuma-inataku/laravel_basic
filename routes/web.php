@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Content;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,38 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
-    return view('hello');
+    return view('welcome');
+});
+
+Route::get('/contents/insert', function() {
+    Content::create([
+        'body' => 'Laravel is PHP framework!!',
+    ]);
+});
+
+Route::get('/contents/insert2', function() {
+    Content::create([
+        'body' => 'PHP is programming language!!',
+    ]);
+});
+
+Route::get('/contents/insert3', function() {
+    Content::create([
+        'body' => 'programming is a lot of fun!!',
+    ]);
+});
+// 論理削除用
+Route::get('/contents/softdelete', function() {
+    Content::find(1)->delete();
+});
+// 論理削除確認用
+Route::get('/contents/softdelete/getwith', function() {
+    $content = Content::withTrashed()->whereNotNull('id')->get();
+
+    dd($content);
+});
+Route::get('/contents/softdelete/getonly', function() {
+    $content = Content::onlyTrashed()->whereNotNull('id')->get();
+
+    dd($content);
 });
