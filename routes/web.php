@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Content;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +49,20 @@ Route::get('/contents/softdelete/getwith', function() {
 Route::get('/contents/softdelete/getonly', function() {
     $content = Content::onlyTrashed()->whereNotNull('id')->get();
 
-    dd($content);
+    // dd($content);
+});
+Route::get('/comments',function() {
+    $post = Post::find(1);
+    dump($post);
+    dump($post->comments);
+    dump($post->comments);
+    foreach ($post->comments as $comment) {
+        dump($comment);
+        echo $comment->id;
+        echo '<br>';
+        echo $comment->title;
+        echo '<br>';
+        echo $comment->body;
+        echo '<br>';
+    }
 });
