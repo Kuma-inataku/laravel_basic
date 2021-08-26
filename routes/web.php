@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -36,33 +37,20 @@ Route::get('/contents/insert3', function() {
         'body' => 'programming is a lot of fun!!',
     ]);
 });
+
 // 論理削除用
 Route::get('/contents/softdelete', function() {
     Content::find(1)->delete();
 });
+
 // 論理削除確認用
 Route::get('/contents/softdelete/getwith', function() {
     $content = Content::withTrashed()->whereNotNull('id')->get();
-
-    dd($content);
 });
+
 Route::get('/contents/softdelete/getonly', function() {
     $content = Content::onlyTrashed()->whereNotNull('id')->get();
 
-    // dd($content);
 });
-Route::get('/comments',function() {
-    $post = Post::find(1);
-    dump($post);
-    dump($post->comments);
-    dump($post->comments);
-    foreach ($post->comments as $comment) {
-        dump($comment);
-        echo $comment->id;
-        echo '<br>';
-        echo $comment->title;
-        echo '<br>';
-        echo $comment->body;
-        echo '<br>';
-    }
-});
+
+Route::get('/comments/index',[CommentController::class, 'index']);
