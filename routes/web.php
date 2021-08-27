@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MyServiceController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -50,9 +51,10 @@ Route::get('/contents/softdelete/getwith', function() {
 
 Route::get('/contents/softdelete/getonly', function() {
     $content = Content::onlyTrashed()->whereNotNull('id')->get();
-
 });
 
+// DI
 Route::get('/comments/index',[CommentController::class, 'index']);
 
-Route::get('/comments/myservice',[CommentController::class, 'myservice']);
+// makeWith
+Route::get('/myservice/{id}',[MyServiceController::class, 'index']);
