@@ -54,3 +54,5 @@ Route::get('/contents/softdelete/getonly', function() {
 });
 
 Route::get('/comments/index',[CommentController::class, 'index']);
+
+Route::get('/comments/myservice',[CommentController::class, 'myservice']);
