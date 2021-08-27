@@ -10,7 +10,7 @@ class CommentController extends Controller
 {
     public function index(Request $request){
         $comments = Comment::get();
-        dump($comments);
+        // dump($comments); 
         return view('comments.index',['comments' => $comments]);
     }
 
