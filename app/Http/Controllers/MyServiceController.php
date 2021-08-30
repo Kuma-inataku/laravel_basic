@@ -7,8 +7,8 @@ use App\MyClasses\MyService;
 
 class MyServiceController extends Controller
 {
-        public function index(int $id = -1){
-            $myservice = app()->makeWith('App\MyClasses\MyService',['id' => $id]);
+        public function index(MyService $myservice, int $id = -1){
+            $myservice->setId($id);
             $data = [
                 'msg' => $myservice->say($id),
                 'data' => $myservice->alldata(),
