@@ -4,23 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MyClasses\MyService;
+use App\MyClasses\MyServiceInterface;
 
 class MyServiceController extends Controller
 {
-    function __construct(MyService $myservice)
+    function __construct()
     {
-        // dd($myservice);
-        $myservice = app('App\MyClasses\MyService');
-        // dd($myservice);
-
     }
-        public function index(MyService $myservice, int $id = -1){
-            $myservice->setId($id);
-            // dd($id);
-            $data = [
-                'msg' => $myservice->say($id),
-                'data' => $myservice->alldata(),
-            ];
-            return view('myservice.index',$data);
-        }
+    public function index(MyServiceInterface $myservice, int $id = -1){
+        $myservice->setId($id);
+        $data = [
+            'msg' => $myservice->say($id),
+            'data' => $myservice->alldata(),
+        ];
+        return view('myservice.index',$data);
     }
+}

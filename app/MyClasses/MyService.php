@@ -4,7 +4,7 @@ namespace App\MyClasses;
 
 use PhpParser\Node\Expr\FuncCall;
 
-class MyService
+class MyService implements MyServiceInterface
 {
   private $serial;
   private $id = -1;
