@@ -56,5 +56,4 @@ Route::get('/contents/softdelete/getonly', function() {
 // DI
 Route::get('/comments/index',[CommentController::class, 'index']);
 
-// makeWith
-Route::get('/myservice/{id}',[MyServiceController::class, 'index']);
+Route::get('/myservice/{id?}',[MyServiceController::class, 'index']);
