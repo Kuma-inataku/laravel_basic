@@ -9,29 +9,14 @@ use App\Facades\MyService;
 
 class MyServiceController extends Controller
 {
-    // public function index(int $id = -1)
-    // {
-    //     MyService::setId($id);
-    //     $data = [
-    //         'msg' => MyService::say(),
-    //         'data' => Myservice::alldata(),
-    //     ];
-    //     return view('myservice.index',$data);
-    // }
-    public function index(int $id = -1)
+/* Service Providerの利用 */
+    public function index(MyServiceInterface $myservice,int $id = -1)
     {
-        MyService::setId($id);
+        $myservice->setId($id);
         $data = [
-            'msg'=> MyService::say(),
-            'data'=> MyService::alldata()
+            'msg'=> $myservice->say(),
+            'data'=> $myservice->alldata()
         ];
-        return view('hello.index', $data);
+        return view('myservice.index', $data);
     }
-    // public function index(Request $request){
-    //     $data = [
-    //         'msg' => $request->msg,
-    //         'data' => $request->alldata,
-    //     ];
-    //     return view('myservice.index',$data);
-    // }
 }
