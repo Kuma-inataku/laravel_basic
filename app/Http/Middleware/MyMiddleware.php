@@ -24,6 +24,7 @@ class MyMiddleware
             'msg' => MyService::say(),
             'alldata' => MyService::alldata(),
         ];
+        echo 'middleware';
         $request->merge($merge_data);
         return $next($request); // Responseインスタンス取得
     }
