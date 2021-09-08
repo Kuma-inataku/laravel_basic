@@ -9,12 +9,11 @@ use App\Facades\MyService;
 
 class MyServiceController extends Controller
 {
-    public function index(int $id = -1)
+    public function index(Request $request)
     {
-        MyService::setId($id);
         $data = [
-            'msg'=> MyService::say(),
-            'data'=> MyService::alldata()
+            'msg'=> $request->hello,
+            'data'=> $request->alldata
         ];
         return view('myservice.index', $data);
     }
