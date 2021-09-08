@@ -17,6 +17,7 @@ class MyMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        // before middleware
         $id = rand(0, count(MyService::alldata()));
         MyService::setId($id);
         $merge_data = [
@@ -25,6 +26,19 @@ class MyMiddleware
             'alldata' => MyService::alldata(),
         ];
         $request->merge($merge_data);
-        return $next($request); // Responseインスタンス取得
+
+        $response = $next($request); // Responseインスタンス取得
+
+        // after middleware
+        $content = $response->content();
+        $content .= 
+        '<style>
+            body {background-color:#eef; }
+            p { font-size:18pt; }
+            li { color: red; font-weight:bold; }
+        </style>';
+        $response->setContent($content);
+
+        return $response;
     }
 }

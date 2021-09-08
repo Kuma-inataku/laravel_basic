@@ -56,7 +56,7 @@ Route::get('/contents/softdelete/getonly', function() {
 // DI
 // Route::get('/myservice',[CommentController::class, 'index']);
 
-Route::get('/myservice',[MyServiceController::class, 'index']);
-Route::get('/myservice/{id?}',[MyServiceController::class, 'index']);
-// Route::get('/myservice',[MyServiceController::class, 'index'])->middleware(App\Http\Middleware\MyMiddleware::class);
-// Route::get('/myservice/{id?}',[MyServiceController::class, 'index'])->middleware(App\Http\Middleware\MyMiddleware::class);
+// Route::get('/myservice',[MyServiceController::class, 'index']);
+// Route::get('/myservice/{id?}',[MyServiceController::class, 'index']);
+Route::get('/myservice',[MyServiceController::class, 'index'])->middleware('MyMW');
+Route::get('/myservice/{id?}',[MyServiceController::class, 'index'])->middleware('MyMW');
