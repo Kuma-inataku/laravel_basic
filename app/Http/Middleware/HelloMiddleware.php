@@ -16,7 +16,7 @@ class HelloMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $hello = 'Yewa! This is Middleware!!';
+        $hello = 'Wow! This is Middleware!!';
         $bye = 'Good-bye, Middleware...';
         $data = [
             'hello'=>$hello,
