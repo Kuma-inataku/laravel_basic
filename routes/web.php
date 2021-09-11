@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MyServiceController;
+use App\Http\Controllers\WebpackController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -60,3 +61,5 @@ Route::get('/contents/softdelete/getonly', function() {
 // Route::get('/myservice/{id?}',[MyServiceController::class, 'index']);
 Route::get('/myservice',[MyServiceController::class, 'index'])->middleware('MyMW');
 Route::get('/myservice/{id?}',[MyServiceController::class, 'index'])->middleware('MyMW');
+
+Route::get('/webpack',[WebpackController::class, 'index']);
