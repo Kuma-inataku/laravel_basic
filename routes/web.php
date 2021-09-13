@@ -6,6 +6,7 @@ use App\Http\Controllers\MyServiceController;
 use App\Http\Controllers\WebpackController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\PersonController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -72,3 +73,11 @@ Route::post('/request/confirm',[RequestController::class, 'confirm']);
 // Route::get('/request/{id}',[RequestController::class, 'index']);
 
 Route::get('/hello',[HelloController::class, 'index']);
+
+Route::get('/person',[PersonController::class, 'index']);
+
+Route::get('person/find',[PersonController::class, 'find']);
+Route::post('person/find',[PersonController::class, 'search']);
+
+// Route::get('person/find', 'PersonController@find');
+// Route::post('person/find', 'PersonController@search');
