@@ -75,3 +75,9 @@ Route::post('/request/confirm',[RequestController::class, 'confirm']);
 Route::get('/hello',[HelloController::class, 'index']);
 
 Route::get('/person',[PersonController::class, 'index']);
+
+Route::get('person/find',[PersonController::class, 'find']);
+Route::post('person/find',[PersonController::class, 'search']);
+
+// Route::get('person/find', 'PersonController@find');
+// Route::post('person/find', 'PersonController@search');
