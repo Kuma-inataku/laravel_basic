@@ -5,6 +5,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MyServiceController;
 use App\Http\Controllers\WebpackController;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\HelloController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -69,3 +70,5 @@ Route::get('/request',[RequestController::class, 'index'])->name('request2');
 Route::get('/request/form',[RequestController::class, 'form']);
 Route::post('/request/confirm',[RequestController::class, 'confirm']);
 // Route::get('/request/{id}',[RequestController::class, 'index']);
+
+Route::get('/hello',[HelloController::class, 'index']);
