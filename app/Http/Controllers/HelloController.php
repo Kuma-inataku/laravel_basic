@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\HelloRequest;
 use Dotenv\Loader\Resolver;
 use Illuminate\Http\Response;
-
-// use Validator;
+use Validator;
 
 class HelloController extends Controller
 {
@@ -33,7 +32,7 @@ class HelloController extends Controller
         $response->cookie('msg',$msg,100);
         return $response;
     }
- 
+
     public function add(Request $request)
     {
         return view('hello.add');
@@ -49,4 +48,4 @@ class HelloController extends Controller
         DB::insert('insert into people (name, mail, age) values (:name, :mail, :age)', $param);
         return redirect('/hello');
     }
- }
+}
