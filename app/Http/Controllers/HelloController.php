@@ -13,7 +13,7 @@ class HelloController extends Controller
 {
     public function index(Request $request)
     {
-        $items = DB::table('people')->simplepaginate(2);
+        $items = DB::table('people')->orderBy('name','asc')->simplepaginate(2);
         return view('hello.index', ['items'=> $items]);
     }
 
