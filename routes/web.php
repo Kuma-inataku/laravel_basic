@@ -82,3 +82,5 @@ Route::get('person/find',[PersonController::class, 'find']);
 Route::post('person/find',[PersonController::class, 'search']);
 
 Route::resource('rest', RestappController::class);
+Route::get('hello/rest',[HelloController::class, 'rest']);
+Route::post('rest/create', [RestappController::class,'store']);
