@@ -15,8 +15,9 @@ class HelloController extends Controller
     public function index(Request $request)
     {
         $sort = $request->sort;
-        $items = Person::orderBy($sort,'asc')->simplepaginate(2);
-        $param = ['items'=>$items, 'sort'=>$sort];
+        $sort = 'name';
+        $items = Person::orderBy($sort, 'asc')->paginate(1);
+        $param = ['items' => $items, 'sort' => $sort];
         return view('hello.index', $param);
     }
 
