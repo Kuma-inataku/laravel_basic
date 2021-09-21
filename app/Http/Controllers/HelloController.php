@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\HelloRequest;
+use App\Models\Person;
 use Dotenv\Loader\Resolver;
 use Illuminate\Http\Response;
 use Validator;
@@ -13,12 +14,11 @@ class HelloController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->hasCookie('msg')){
-            $msg = 'Cookie: '.$request->cookie('msg');
-        }else{
-            $msg = '※クッキーはありません。';
-        }
-        return view('hello.index', ['msg'=> $msg]);
+        $sort = $request->sort;
+        $sort = 'name';
+        $items = Person::orderBy($sort, 'asc')->paginate(1);
+        $param = ['items' => $items, 'sort' => $sort];
+        return view('hello.index', $param);
     }
 
     public function post(Request $request)
