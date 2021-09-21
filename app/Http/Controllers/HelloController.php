@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\HelloRequest;
+use App\Models\Person;
 use Dotenv\Loader\Resolver;
 use Illuminate\Http\Response;
 use Validator;
@@ -13,8 +14,10 @@ class HelloController extends Controller
 {
     public function index(Request $request)
     {
-        $items = DB::table('people')->orderBy('name','asc')->simplepaginate(2);
-        return view('hello.index', ['items'=> $items]);
+        $sort = $request->sort;
+        $items = Person::orderBy($sort,'asc')->simplepaginate(2);
+        $param = ['items'=>$items, 'sort'=>$sort];
+        return view('hello.index', $param);
     }
 
     public function post(Request $request)
