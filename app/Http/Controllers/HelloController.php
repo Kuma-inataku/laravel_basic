@@ -48,4 +48,9 @@ class HelloController extends Controller
         DB::insert('insert into people (name, mail, age) values (:name, :mail, :age)', $param);
         return redirect('/hello');
     }
+    
+    public function rest(Request $request)
+    {
+        return view('hello.rest');
+    }
 }

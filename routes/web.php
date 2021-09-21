@@ -7,6 +7,7 @@ use App\Http\Controllers\WebpackController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\RestappController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -80,5 +81,6 @@ Route::get('/person',[PersonController::class, 'index']);
 Route::get('person/find',[PersonController::class, 'find']);
 Route::post('person/find',[PersonController::class, 'search']);
 
-// Route::get('person/find', 'PersonController@find');
-// Route::post('person/find', 'PersonController@search');
+Route::resource('rest', RestappController::class);
+Route::get('hello/rest',[HelloController::class, 'rest']);
+Route::post('rest/create', [RestappController::class,'store']);
