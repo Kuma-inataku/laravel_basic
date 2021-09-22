@@ -73,8 +73,11 @@ Route::get('/request/form',[RequestController::class, 'form']);
 Route::post('/request/confirm',[RequestController::class, 'confirm']);
 // Route::get('/request/{id}',[RequestController::class, 'index']);
 
-Route::get('/hello',[HelloController::class, 'index']);
+Route::get('/hello',[HelloController::class, 'index'])->middleware('auth');
 Route::post('/hello',[HelloController::class, 'post']);
+
+Route::get('/hello/auth',[HelloController::class, 'getAuth'])->middleware('auth');
+Route::post('/hello/auth',[HelloController::class, 'postAuth']);
 
 Route::get('/person',[PersonController::class, 'index']);
 
@@ -87,3 +90,7 @@ Route::post('rest/create', [RestappController::class,'store']);
 
 Route::get('hello/session',[HelloController::class, 'ses_get']);
 Route::post('hello/session', [HelloController::class,'ses_put']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
