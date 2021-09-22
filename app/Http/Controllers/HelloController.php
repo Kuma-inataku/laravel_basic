@@ -23,6 +23,24 @@ class HelloController extends Controller
         return view('hello.index', $param);
     }
 
+    public function getAuth(Request $request)
+    {
+        $param = ['message' => 'ログインしてください'];
+        return view('hello/auth', $param);
+    }
+
+    public function postAuth(Request $request)
+    {
+        $email = $request->email;
+        $password = $request->password;
+        if (Auth::attempt(['email' => $email, 'password' => $password])){
+            $msg = 'ログインしました。';
+        }else{
+            $msg = 'ログインに失敗しました。';
+        }
+        return view('hello.auth', ['message' => $msg]);
+    }
+
     public function post(Request $request)
     {
         $validate_rule = [
