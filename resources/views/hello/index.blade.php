@@ -15,14 +15,19 @@
 @endsection
 
 @section('content')
-   <table>
-   <tr>
-       <th><a href="/basic_laravel/public/hello?sort=name">name</a></th>
-       <th><a href="/basic_laravel/public/hello?sort=mail">mail</a></th>
-       <th><a href="/basic_laravel/public/hello?sort=age">age</a></th>
-   </tr>
-   @foreach ($items as $item)
-       <tr>
+@if(Auth::check())
+<p>USER:{{ $user->name.'('.$user->email.')'}}</p>
+@else
+<p>※ログインしていません。（ <a href="/basic_laravel/public/login" >ログイン</a>｜<a href="/basic_laravel/public/register">登録</a> ）</p>
+@endif
+<table>
+    <tr>
+        <th><a href="/basic_laravel/public/hello?sort=name">name</a></th>
+        <th><a href="/basic_laravel/public/hello?sort=mail">mail</a></th>
+        <th><a href="/basic_laravel/public/hello?sort=age">age</a></th>
+    </tr>
+    @foreach ($items as $item)
+        <tr>
            <td>{{$item->name}}</td>
            <td>{{$item->mail}}</td>
            <td>{{$item->age}}</td>
