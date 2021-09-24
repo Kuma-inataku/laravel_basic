@@ -22,25 +22,34 @@ class HelloTest extends TestCase
      * 
      */
 
-     use DatabaseMigrations;
+    use DatabaseMigrations;
 
     public function testHello()
-    {
-        $this->assertTrue(true);
-        
-        $response = $this->get('/');
-        $response->assertStatus(200);
+    {        
+        factory(User::class)->create([
+            'name' => 'AAA',
+            'email' => 'BBB@CCC.COM',
+            'password' => 'ABCABC',
+        ]);
+        factory(User::class, 10)->create();
 
-        $response = $this->get('/hello');
-        $response->assertStatus(302);
+        $this->assertDatabaseHas('users', [
+            'name' => 'AAA',
+            'email' => 'BBB@CCC.COM',
+            'password' => 'ABCABC',
+        ]);
 
-        $person = factory(User::class)->create();
-        // $person = factory(User::class)->create();
-        $response = $this->actingAs($person)->get('/hello');
-        $response->assertStatus(200);
+        factory(Person::class)->create([
+            'name' => 'XXX',
+            'mail' => 'YYY@ZZZ.COM',
+            'age' => 123,
+        ]);
+        factory(Person::class, 10)->create();
 
-        $response = $this->get('/no_route');
-        $response->assertStatus(404);
-
+        $this->assertDatabaseHas('people', [
+            'name' => 'XXX',
+            'mail' => 'YYY@ZZZ.COM',
+            'age' => 123,
+        ]);
     }
 }
