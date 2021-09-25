@@ -16,8 +16,9 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class HelloController extends Controller
 {
-    public function index($id)
+    public function index(Request $request)
     {
+        $id = $request->query('page');
         $msg = 'show page : ' . $id;
         $result = DB::table('people')->paginate(5, ['*'], 'page', $id);
 
