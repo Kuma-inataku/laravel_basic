@@ -5,19 +5,13 @@
 </head>
 <body>
     <h1>Hello/Index</h1>
-    <p>{!!$msg!!}</p>
-    <form action="/basic_laravel/public/hello" method="get">
-        @csrf
-        <div>NAME:<input type="text" name="name" value="{{old('name')}}"></div>
-        <div>MAIL:<input type="text" name="mail" value="{{old('mail')}}"></div>
-        <div>TEL: <input type="text" name="tel"  value="{{old('tel')}}"></div>
-        <input type="submit">
-    </form>
-    <hr>
+    <p>{{$msg}}</p>
     <ol>
-    @for($i = 0;$i < count($keys);$i++)
-        <li>{{$keys[$i]}}：{{$values[$i]}}</li>
-    @endfor
+    @foreach($data as $item)
+    <li>{{$item->name}} [{{$item->mail}}, 
+        {{$item->age}}]</li>
+    @endforeach
     </ol>
+    <hr>
 </body>
 </html>

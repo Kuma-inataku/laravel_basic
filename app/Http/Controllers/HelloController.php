@@ -16,21 +16,16 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class HelloController extends Controller
 {
-    public function index(Request $request,Response $response)
+    public function index($id)
     {
-        $name = $request->query('name');
-        $mail = $request->query('mail');
-        $tel = $request->query('tel');
-        $msg = $request->query('msg');
-        $keys = ['名前', 'メール', '電話'];
-        $values = [$name, $mail, $tel];
+        $msg = 'show page : ' . $id;
+        $result = DB::table('people')->paginate(5, ['*'], 'page', $id);
+
         $data = [
             'msg' => $msg,
-            'keys' => $keys,
-            'values' => $values,
+            'data' => $result,
         ];
 
-        $request->flash();
         return view('hello.index', $data);
     }
 
