@@ -18,24 +18,12 @@ class HelloController extends Controller
 {
     public function index(Request $request,Response $response)
     {
-        $msg = 'please input text';
-        $keys = [];
-        $values = [];
-        if($request->isMethod('post')){
-            $form = $request->only(['name','mail','tel']);
-            $keys = array_keys($form);
-            $values = array_values($form);
-            $msg = old('name').','.old('mail').','.old('tel');
-            $data = [
-                'msg' => $msg,
-                'keys' => $keys,
-                'values' => $values,
-            ];
-            $request->flash();
-
-            return view('hello.index', $data);
-        }
-
+        $name = $request->query('name');
+        $mail = $request->query('mail');
+        $tel = $request->query('tel');
+        $msg = $name.','.$mail.','.$tel;
+        $keys = ['名前', 'メール', '電話'];
+        $values = [$name, $mail, $tel];
         $data = [
             'msg' => $msg,
             'keys' => $keys,
