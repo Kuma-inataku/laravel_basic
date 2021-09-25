@@ -20,7 +20,7 @@ class HelloController extends Controller
     {
         $id = $request->query('page');
         $msg = 'show page : ' . $id;
-        $result = DB::table('people')->simplePaginate(5, ['*'], 'page', $id);
+        $result = Person::paginate(5);
 
         $data = [
             'msg' => $msg,
