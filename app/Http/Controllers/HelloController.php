@@ -22,21 +22,23 @@ class HelloController extends Controller
         $keys = [];
         $values = [];
         if($request->isMethod('post')){
-            $form = $request->all();
-            $result = '<html><body>';
-            foreach($form as $key => $value){
-                $result .= $key . ':'.$value."<br>";
-            }
-            $result .= '</body></html>';
-            $response->setContent($result);
-            return $response;
+            $form = $request->only(['name','mail']);
+            $keys = array_keys($form);
+            $values = array_values($form);
+            $data = [
+                'msg' => $msg,
+                'keys' => $keys,
+                'values' => $values,
+            ];
+            return view('hello.index', $data);
         }
+
         $data = [
             'msg' => $msg,
             'keys' => $keys,
             'values' => $values,
         ];
-        return view('hello.index', $data);
+    return view('hello.index', $data);
     }
 
     public function getAuth(Request $request)
