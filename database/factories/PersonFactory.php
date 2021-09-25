@@ -23,8 +23,8 @@ class PersonFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'age' => $this->faker->random_int(1, 99),
+            'mail' => $this->faker->unique()->safeEmail(),
+            'age' => $this->faker->numberBetween(1, 99),
         ];
     }
 }
