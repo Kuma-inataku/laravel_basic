@@ -73,8 +73,11 @@ Route::get('/request/form',[RequestController::class, 'form']);
 Route::post('/request/confirm',[RequestController::class, 'confirm']);
 // Route::get('/request/{id}',[RequestController::class, 'index']);
 
-Route::get('/hello',[HelloController::class, 'index'])->middleware('auth');
-Route::post('/hello',[HelloController::class, 'post']);
+// Route::get('/hello',[HelloController::class, 'index'])->middleware('auth');
+Route::get('/hello/other',[HelloController::class, 'other']);
+Route::get('/hello',[HelloController::class, 'index'])->name('hello');
+
+Route::post('/hello',[HelloController::class, 'index']);
 
 Route::get('/hello/auth',[HelloController::class, 'getAuth'])->middleware('auth');
 Route::post('/hello/auth',[HelloController::class, 'postAuth']);
