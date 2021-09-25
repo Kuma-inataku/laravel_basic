@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Person;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -34,5 +35,7 @@ class PeopleTableSeeder extends Seeder
             'age' => 56,
         ];
         DB::table('people')->insert($param);
+
+        Person::factory(20)->create();
     }
 }
