@@ -5,22 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\HelloRequest;
+use App\Models\Order;
 use App\Models\Person;
 use Dotenv\Loader\Resolver;
 use Illuminate\Http\Response;
 use Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+
 
 class HelloController extends Controller
 {
     public function index(Request $request)
     {
-        $user = Auth::user();
-        $sort = $request->sort;
-        $sort = 'name';
-        $items = Person::orderBy($sort, 'asc')->simplePaginate(5);
-        $param = ['items' => $items, 'sort' => $sort, 'user' => $user];
-        return view('hello.index', $param);
+        // $user = Auth::user();
+        // $sort = $request->sort;
+        // $sort = 'name';
+        // $items = Person::orderBy($sort, 'asc')->simplePaginate(5);
+        // $param = ['items' => $items, 'sort' => $sort, 'user' => $user];
+        // return view('hello.index', $param);
+        $orders = Order::with('orderable');
+        
+        $orders = Order::query()
+        ->with(['orderable' => function (MorphTo $morphTo) {
+            $morphTo->morphWith([
+                User::class => ['userAttribute'],
+            ]);
+        }])->get();
+
+        dump($orders);
     }
 
     public function getAuth(Request $request)
