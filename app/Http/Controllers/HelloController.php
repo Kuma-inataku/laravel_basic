@@ -24,15 +24,15 @@ class HelloController extends Controller
             return $item->id % 2 == 0;
         });
 
-        $even2 = Person::get()->filter(function ($item){
-            return $item->age % 2 == 0;
+        $map = $even->map(function($item, $key)
+        {
+            return $item->id .':'.$item->name;
         });
-
-        $result = $even->merge($even2);
+        dump($map);
 
         $data = [
-            'msg' => $msg,
-            'data' => $result,
+            'msg' => $map,
+            'data' => $even,
         ];
 
         return view('hello.index', $data);
