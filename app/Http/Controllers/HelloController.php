@@ -21,7 +21,7 @@ class HelloController extends Controller
         $name = $request->query('name');
         $mail = $request->query('mail');
         $tel = $request->query('tel');
-        $msg = $name.','.$mail.','.$tel;
+        $msg = $request->query('msg');
         $keys = ['名前', 'メール', '電話'];
         $values = [$name, $mail, $tel];
         $data = [
@@ -32,6 +32,18 @@ class HelloController extends Controller
 
         $request->flash();
         return view('hello.index', $data);
+    }
+
+    public function other()
+    {
+        $data = [
+            'name' => 'Taro',
+            'mail' => 'taro@yamada',
+            'tel' => '090-000-000',
+        ];
+        $query_str = http_build_query($data);
+        $data['msg'] = $query_str;
+        return redirect()->route('hello', $data);
     }
 
     public function getAuth(Request $request)
