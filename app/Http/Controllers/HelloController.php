@@ -18,22 +18,14 @@ class HelloController extends Controller
 {
     public function index(Request $request)
     {
-        // $user = Auth::user();
-        // $sort = $request->sort;
-        // $sort = 'name';
-        // $items = Person::orderBy($sort, 'asc')->simplePaginate(5);
-        // $param = ['items' => $items, 'sort' => $sort, 'user' => $user];
-        // return view('hello.index', $param);
-        $orders = Order::with('orderable');
-        
-        $orders = Order::query()
-        ->with(['orderable' => function (MorphTo $morphTo) {
-            $morphTo->morphWith([
-                User::class => ['userAttribute'],
-            ]);
-        }])->get();
-
-        dump($orders);
+        $msg = 'please input text';
+        if($request->isMethod('post')){
+            $msg = 'you typed:"'.$request->input('msg').'"';
+        }
+        $data = [
+            'msg' => $msg,
+        ];
+        return view('hello.index', $data);
     }
 
     public function getAuth(Request $request)
