@@ -102,12 +102,24 @@ class HelloController extends Controller
         return redirect('hello/session');
     }
 
-    public function save($id, $name)
-    {
-        $record = Person::find($id);
-        $record->name = $name;
-        $record->save();
-        return redirect()->route('hello');
-    }
+    // public function save($id, $name)
+    // {
+    //     $record = Person::find($id);
+    //     $record->name = $name;
+    //     $record->save();
+    //     return redirect()->route('hello');
+    // }
 
+    public function json($id = -1)
+    {
+        if ($id == -1)
+        {
+            return Person::get()->toJson();
+        }
+        else
+        {
+            return Person::find($id)->toJson();
+        }
+    }
+    
 }

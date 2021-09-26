@@ -76,7 +76,7 @@ Route::post('/request/confirm',[RequestController::class, 'confirm']);
 // Route::get('/hello',[HelloController::class, 'index'])->middleware('auth');
 Route::get('/hello/other',[HelloController::class, 'other']);
 Route::get('/hello',[HelloController::class, 'index'])->name('hello');
-Route::get('/hello/{id}/{name}',[HelloController::class, 'save']);
+// Route::get('/hello/{id}/{name}',[HelloController::class, 'save']);
 Route::get('/hello/{id}',[HelloController::class, 'index']);
 Route::post('/hello',[HelloController::class, 'index']);
 Route::get('hello/session',[HelloController::class, 'ses_get']);
@@ -84,6 +84,8 @@ Route::post('hello/session', [HelloController::class,'ses_put']);
 Route::get('/hello/auth',[HelloController::class, 'getAuth'])->middleware('auth');
 Route::post('/hello/auth',[HelloController::class, 'postAuth']);
 Route::get('hello/rest',[HelloController::class, 'rest']);
+Route::get('/hello/json',[HelloController::class, 'json']);
+Route::get('/hello/json/{id}',[HelloController::class, 'json']);
 
 Route::get('/person',[PersonController::class, 'index']);
 Route::get('person/find',[PersonController::class, 'find']);
