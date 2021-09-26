@@ -81,6 +81,13 @@ class Person extends Model
     {
         $this->attributes['name'] = strtoupper($value);
     }
+
+    public function setAllDataAttribute(Array $value)
+    {
+        $this->attributes['name'] = $value[0];
+        $this->attributes['mail'] = $value[1];
+        $this->attributes['age'] = $value[2];
+    }
 }
 
 class MyCollection extends Collection
