@@ -44,6 +44,25 @@ class Person extends Model
         static::addGlobalScope(new ScopePerson);
     }
 
+    public function getNameAndIdAttribute()
+    {
+        return $this->name.'[id='.$this->id.']';
+    }
+
+    public function getNameAndMailAttribute()
+    {
+        return $this->name.'('.$this->mail.')';
+    }
+
+    public function getNameAndAgeAttribute()
+    {
+        return $this->name.'('.$this->age.')';
+    }
+
+    public function getAllDataAttribute()
+    {
+        return $this->name.'('.$this->age.')'.'['.$this->mail.']';
+    }
 }
 
 class MyCollection extends Collection
