@@ -28,7 +28,6 @@ class HelloController extends Controller
         {
             return $item->id .':'.$item->name;
         });
-        dump($map);
 
         $data = [
             'msg' => $map,
