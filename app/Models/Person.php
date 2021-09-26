@@ -12,6 +12,14 @@ class Person extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
+    public static $rules = [
+        'name' => 'required',
+        'mail' => 'email',
+        'age' => 'integer',
+    ];
+
     public function newCollection(array $models = [])
     {
         return new MyCollection($models);
@@ -69,6 +77,10 @@ class Person extends Model
         return strtoupper($value);
     }
 
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtoupper($value);
+    }
 }
 
 class MyCollection extends Collection

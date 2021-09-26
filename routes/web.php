@@ -76,6 +76,7 @@ Route::post('/request/confirm',[RequestController::class, 'confirm']);
 // Route::get('/hello',[HelloController::class, 'index'])->middleware('auth');
 Route::get('/hello/other',[HelloController::class, 'other']);
 Route::get('/hello',[HelloController::class, 'index'])->name('hello');
+Route::get('/hello/{id}/{name}',[HelloController::class, 'save']);
 Route::get('/hello/{id}',[HelloController::class, 'index']);
 Route::post('/hello',[HelloController::class, 'index']);
 Route::get('hello/session',[HelloController::class, 'ses_get']);

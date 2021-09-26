@@ -105,4 +105,13 @@ class HelloController extends Controller
         $request->session()->put('msg',$msg);
         return redirect('hello/session');
     }
+
+    public function save($id, $name)
+    {
+        $record = Person::find($id);
+        $record->name = $name;
+        $record->save();
+        return redirect()->route('hello');
+    }
+
 }
