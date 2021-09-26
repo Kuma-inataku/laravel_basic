@@ -63,6 +63,12 @@ class Person extends Model
     {
         return $this->name.'('.$this->age.')'.'['.$this->mail.']';
     }
+
+    public function getNameAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
 }
 
 class MyCollection extends Collection
