@@ -20,18 +20,11 @@ class HelloController extends Controller
     {
         $msg = 'show people record';
 
-        $even = Person::get()->filter(function ($item){
-            return $item->id % 2 == 0;
-        });
-
-        $map = $even->map(function($item, $key)
-        {
-            return $item->id .':'.$item->name;
-        });
-
+        $re = Person::get();
+        $fields = Person::get()->fields();
         $data = [
-            'msg' => $map,
-            'data' => $even,
+            'msg' => implode(',',$fields),
+            'data' => $re,
         ];
 
         return view('hello.index', $data);
@@ -39,14 +32,10 @@ class HelloController extends Controller
 
     public function other()
     {
-        $data = [
-            'name' => 'Taro',
-            'mail' => 'taro@yamada',
-            'tel' => '090-000-000',
-        ];
-        $query_str = http_build_query($data);
-        $data['msg'] = $query_str;
-        return redirect()->route('hello', $data);
+        $person = new Person();
+        $person->all_data = ['aaa', 'bbb@ccc', 1234];
+        $person->save();
+        return redirect()->route('hello');
     }
 
     public function getAuth(Request $request)
@@ -112,4 +101,25 @@ class HelloController extends Controller
         $request->session()->put('msg',$msg);
         return redirect('hello/session');
     }
+
+    // public function save($id, $name)
+    // {
+    //     $record = Person::find($id);
+    //     $record->name = $name;
+    //     $record->save();
+    //     return redirect()->route('hello');
+    // }
+
+    public function json($id = -1)
+    {
+        if ($id == -1)
+        {
+            return Person::get()->toJson();
+        }
+        else
+        {
+            return Person::find($id)->toJson();
+        }
+    }
+    
 }
