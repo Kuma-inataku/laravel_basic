@@ -25,6 +25,10 @@ use App\Models\Post;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('hello/soft-delete', [App\Http\Controllers\SoftDeleteController::class, 'index'])->name('index');
+
 
 Route::get('/contents/insert', function() {
     Content::create([
@@ -96,4 +100,3 @@ Route::post('rest/create', [RestappController::class,'store']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             CommentsTableSeeder::class,
             PeopleTableSeeder::class,
             RestdataTableSeeder::class,
+            UserTableSeeder::class,
         ]);
     }
 }

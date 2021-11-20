@@ -21,7 +21,7 @@ class HelloController extends Controller
         app()->bind('myName', function(){
             return 'John Doe';
         });
-        dd(app());
+        // dd(app());
         $msg = 'show people record';
 
         $re = Person::get();
