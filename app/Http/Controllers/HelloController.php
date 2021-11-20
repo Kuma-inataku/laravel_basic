@@ -21,7 +21,14 @@ class HelloController extends Controller
         app()->bind('myName', function(){
             return 'John Doe';
         });
-        dd(app());
+        $name = app()->make('myName');
+        $name2 = app('myName');
+        $name3 = resolve('myName');
+        $name4 = \App::make('myName');
+        dump($name);
+        dump($name2);
+        dump($name3);
+        dump($name4);
         $msg = 'show people record';
 
         $re = Person::get();
