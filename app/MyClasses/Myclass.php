@@ -6,17 +6,13 @@ use App\MyClasses\Slack;
 
 class MyClass
 {
-  public $slack;
+  public $message;
 
-  public function __construct(Slack $slack){
-
-      $this->slack = $slack;
-
+  public function __construct(Message $message){
+      $this->message = $message;
   }
 
   public function run(){
-
-      $this->slack->send();
-
+      $this->message->send();
   }
 }

@@ -2,7 +2,7 @@
 
 namespace App\MyClasses;
 
-class Slack implements Message
+class Mail implements Message
 {
 	public function send(){
 		dd('something happens');
