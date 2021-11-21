@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class ServiceContainerController extends Controller
 {
-    
+    public function index()
+    {
+      $slack = new \App\MyClasses\Slack;
+
+      $myClass = new \App\MyClasses\MyClass($slack);
+
+      $myClass->run();
+    }
 }
