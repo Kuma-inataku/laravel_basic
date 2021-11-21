@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use app\MyClasses\MyClass;
+use app\MyClasses\Slack;
+
 class ServiceContainerController extends Controller
 {
     public function index()
@@ -12,11 +15,19 @@ class ServiceContainerController extends Controller
 
       // $myClass->run();
 
-      // 登録
+      // // 登録
+      // app()->bind('myclass', \App\MyClasses\MyClass::class);
+      // // 呼び出し
+      // $myClass = app()->make('myclass');
+      // // 実行
+      // $myClass->run();
+
       app()->bind('myclass', \App\MyClasses\MyClass::class);
-      // 呼び出し
+
       $myClass = app()->make('myclass');
-      // 実行
-      $myClass->run();
+
+      $myClass2 = app()->make('myclass');
+
+      dd($myClass, $myClass2);
     }
 }
