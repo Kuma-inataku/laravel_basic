@@ -8,6 +8,7 @@ use App\Http\Controllers\RequestController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\RestappController;
+use App\Http\Controllers\ServiceContainerController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -97,3 +98,5 @@ Route::post('rest/create', [RestappController::class,'store']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/service-container',[ServiceContainerController::class, 'index'])->name('service-container.index');
