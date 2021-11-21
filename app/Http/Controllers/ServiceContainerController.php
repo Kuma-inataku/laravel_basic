@@ -22,7 +22,7 @@ class ServiceContainerController extends Controller
       // // 実行
       // $myClass->run();
 
-      app()->bind('myclass', \App\MyClasses\MyClass::class);
+      app()->singleton('myclass', \App\MyClasses\MyClass::class);
 
       $myClass = app()->make('myclass');
 
