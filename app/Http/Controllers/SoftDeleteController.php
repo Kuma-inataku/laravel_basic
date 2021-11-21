@@ -11,15 +11,6 @@ class SoftDeleteController extends Controller
     {
         $users = User::get();
 
-        dump($users);
-
         return view('hello.soft-delete', ['users' => $users]);
-    }
-    
-    public function store()
-    {
-        $users->create([
-            
-        ])
     }
 }

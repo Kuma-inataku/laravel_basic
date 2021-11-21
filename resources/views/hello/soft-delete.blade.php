@@ -8,7 +8,7 @@
     <h1>Hello/softdelete</h1>
     @foreach ($users as $user)
         <ul>
-            <li>{{ $user->name }}</li>
+            <li>{{ $user->name }} | {{ $user->email }}</li>
         </ul>
     @endforeach
 </body>

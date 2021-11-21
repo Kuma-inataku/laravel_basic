@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             PeopleTableSeeder::class,
             RestdataTableSeeder::class,
             UserTableSeeder::class,
+            UserAttributesTableSeeder::class,
         ]);
     }
 }
