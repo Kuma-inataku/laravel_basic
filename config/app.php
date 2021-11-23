@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\MySeviceProvider::class,
         App\Providers\HelloServiceProvider::class,
+        App\Providers\OwnServiceProvider::class,
 
         /*
          * Package Service Providers...
