@@ -9,6 +9,7 @@ use App\Http\Controllers\HelloController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\RestappController;
 use App\Http\Controllers\ServiceContainerController;
+use App\Http\Controllers\ServiceProviderController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -100,3 +101,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/service-container',[ServiceContainerController::class, 'index'])->name('service-container.index');
+Route::get('/service-provider',[ServiceProviderController::class, 'index'])->name('service-provider.index');
