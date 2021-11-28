@@ -8,6 +8,7 @@ use Mail;
 use App\Mail\welcomeMail;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Notifications\SendWelcomeNotification;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -74,7 +75,8 @@ class RegisterController extends Controller
         ]);
 
         // Mail::to($user->email)->send(new welcomeMail());
-        SendWelcomMail::dispatch($user);
+        // SendWelcomMail::dispatch($user);
+        $user->notify(new SendWelcomeNotification);
         return $user;
     }
 }
