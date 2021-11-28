@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendWelcomMail;
 use Mail;
 use App\Mail\welcomeMail;
 use App\Providers\RouteServiceProvider;
@@ -72,7 +73,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        Mail::to($user->email)->send(new welcomeMail());
+        // Mail::to($user->email)->send(new welcomeMail());
+        SendWelcomMail::dispatch($user);
         return $user;
     }
 }
