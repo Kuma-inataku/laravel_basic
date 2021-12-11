@@ -11,6 +11,7 @@ use App\Http\Controllers\RestappController;
 use App\Http\Controllers\ServiceContainerController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\MailSendController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -104,4 +105,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/service-container',[ServiceContainerController::class, 'index'])->name('service-container.index');
 Route::get('/service-provider',[ServiceProviderController::class, 'index'])->name('service-provider.index');
 
+<<<<<<< HEAD
 Route::get('/log',[LogController::class, 'index'])->name('log.index');
+=======
+// メール送信
+Route::get('/mail', [MailSendController::class,'index']);
+>>>>>>> log_error_message_2
