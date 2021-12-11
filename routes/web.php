@@ -10,6 +10,7 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\RestappController;
 use App\Http\Controllers\ServiceContainerController;
 use App\Http\Controllers\ServiceProviderController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\MailSendController;
 use App\Models\Content;
 use App\Models\Post;
@@ -78,7 +79,7 @@ Route::post('/request/confirm',[RequestController::class, 'confirm']);
 
 // Route::get('/hello',[HelloController::class, 'index'])->middleware('auth');
 Route::get('/hello/other',[HelloController::class, 'other']);
-Route::get('/hello',[HelloController::class, 'index'])->name('hello');
+Route::get('/hello',[HelloController::class, 'index'])->name('hello.index');
 // Route::get('/hello/{id}/{name}',[HelloController::class, 'save']);
 Route::get('/hello/{id}',[HelloController::class, 'index']);
 Route::post('/hello',[HelloController::class, 'index']);
@@ -104,5 +105,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/service-container',[ServiceContainerController::class, 'index'])->name('service-container.index');
 Route::get('/service-provider',[ServiceProviderController::class, 'index'])->name('service-provider.index');
 
+<<<<<<< HEAD
+Route::get('/log',[LogController::class, 'index'])->name('log.index');
+=======
 // メール送信
 Route::get('/mail', [MailSendController::class,'index']);
+>>>>>>> log_error_message_2
