@@ -18,11 +18,6 @@ class HelloController extends Controller
 {
     public function index(Request $request)
     {
-        app()->bind('myName', function(){
-            return 'John Doe';
-        });
-        $msg = 'show people record';
-
         $re = Person::get();
         $fields = Person::get()->fields();
         $data = [
