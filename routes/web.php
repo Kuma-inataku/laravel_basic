@@ -11,6 +11,7 @@ use App\Http\Controllers\RestappController;
 use App\Http\Controllers\ServiceContainerController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\MailSendController;
+use App\Http\Controllers\StorageController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -106,3 +107,7 @@ Route::get('/service-provider',[ServiceProviderController::class, 'index'])->nam
 
 // メール送信
 Route::get('/mail', [MailSendController::class,'index']);
+
+// メール送信
+Route::get('/storage', [StorageController::class,'index'])->name('storage.index');
+// Route::post('/storage', [StorageController::class,'index'])->name('storage.index');
