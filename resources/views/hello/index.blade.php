@@ -3,7 +3,6 @@
 <head>
     <title>Index</title>
     <link href="/basic_laravel/public/css/app.css"  rel="stylesheet">
-    ……必要に応じて追加しました……
     <script>
     function doAction(){
         var id = document.querySelector('#id').value;
