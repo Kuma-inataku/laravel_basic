@@ -111,4 +111,7 @@ Route::get('/log',[LogController::class, 'index'])->name('log.index');
 
 Route::get('/storage', [StorageController::class,'index'])->name('storage.index');
 
-Route::resource('upload',UploadController::class);
+// Route::resource('upload',UploadController::class);
+Route::get('upload',[UploadController::class, 'index']);
+Route::post('upload',[UploadController::class, 'store']);
+Route::get('upload/download',[UploadController::class, 'download']);
