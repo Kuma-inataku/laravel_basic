@@ -13,10 +13,11 @@ class UploadController extends Controller
     public function store(Request $request){
         // dd($request->file('file'));
         $file = $request->file('file');
-        $file->storeAs('', 'test.jpg');
 
-        // Storage::disk('s3')->putFile('/', $file);
-        // /storage/appに保存される
-        // $file->store('');
+        // ローカル(/storage/app)に名前指定で保存
+        // $file->storeAs('', 'test.jpg');
+
+        // s3に保存
+        Storage::disk('s3')->putFile('/', $file);
     }
 }
