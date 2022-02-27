@@ -13,6 +13,7 @@ use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\MailSendController;
 use App\Http\Controllers\StorageController;
+use App\Http\Controllers\UploadController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -108,6 +109,6 @@ Route::get('/service-provider',[ServiceProviderController::class, 'index'])->nam
 
 Route::get('/log',[LogController::class, 'index'])->name('log.index');
 
-// メール送信
 Route::get('/storage', [StorageController::class,'index'])->name('storage.index');
-// Route::post('/storage', [StorageController::class,'index'])->name('storage.index');
+
+Route::resource('upload',UploadController::class);

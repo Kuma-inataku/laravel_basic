@@ -32,4 +32,5 @@ class StorageController extends Controller
         ];
         return view('storage.index', $data);
     }
+    public function 
 }
