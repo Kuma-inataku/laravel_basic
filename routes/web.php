@@ -13,6 +13,7 @@ use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\MailSendController;
 use App\Http\Controllers\StorageController;
+use App\Http\Controllers\UploadController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -108,6 +109,12 @@ Route::get('/service-provider',[ServiceProviderController::class, 'index'])->nam
 
 Route::get('/log',[LogController::class, 'index'])->name('log.index');
 
-// メール送信
 Route::get('/storage', [StorageController::class,'index'])->name('storage.index');
-// Route::post('/storage', [StorageController::class,'index'])->name('storage.index');
+
+// Route::resource('upload',UploadController::class);
+Route::get('/upload',[UploadController::class, 'index'])->name('upload.index');
+Route::post('/upload',[UploadController::class, 'store'])->name('upload.store');
+Route::get('/upload/streaming_download',[UploadController::class, 'streamingDownload']);
+Route::get('/upload/zip_download',[UploadController::class, 'zipDownload'])->name('upload.zip_download');
+Route::get('/upload/zip_streaming_download',[UploadController::class, 'zipStreamingDownload'])->name('upload.zip_streaming_download');
+Route::get('/upload/get_file',[UploadController::class, 'getFile'])->name('upload.get_file');
