@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use ZipArchive;
+use Zip;
 
 class UploadController extends Controller
 {
@@ -74,5 +75,20 @@ class UploadController extends Controller
         $zip->close();
 
         return response()->download(public_path().'/test.zip'); 
+    }
+
+    public function zipStreamingDownload() {
+        // note: https://brainlog.jp/programming/laravel/post-2702/
+        // ダウンロードさせたいファイルのパスが入った配列
+        $s3_path = 's3://' . env('AWS_BUCKET') . '/' . config('origin.s3_object.object_key');
+        $filePaths = [
+            $s3_path
+        ];
+
+        // 完成時のzipファイルの名前
+        $zipname = 'download.zip';
+
+        // zipファイルストリーミング
+        return Zip::create($zipname, $filePaths);
     }
 }

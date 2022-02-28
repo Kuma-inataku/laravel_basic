@@ -116,4 +116,5 @@ Route::get('/upload',[UploadController::class, 'index'])->name('upload.index');
 Route::post('/upload',[UploadController::class, 'store'])->name('upload.store');
 Route::get('/upload/streaming_download',[UploadController::class, 'streamingDownload']);
 Route::get('/upload/zip_download',[UploadController::class, 'zipDownload'])->name('upload.zip_download');
+Route::get('/upload/zip_streaming_download',[UploadController::class, 'zipStreamingDownload'])->name('upload.zip_streaming_download');
 Route::get('/upload/get_file',[UploadController::class, 'getFile'])->name('upload.get_file');
