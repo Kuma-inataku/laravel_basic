@@ -14,6 +14,7 @@ use App\Http\Controllers\LogController;
 use App\Http\Controllers\MailSendController;
 use App\Http\Controllers\StorageController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\EagerLoadingController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -118,3 +119,5 @@ Route::get('/upload/streaming_download',[UploadController::class, 'streamingDown
 Route::get('/upload/zip_download',[UploadController::class, 'zipDownload'])->name('upload.zip_download');
 Route::get('/upload/zip_streaming_download',[UploadController::class, 'zipStreamingDownload'])->name('upload.zip_streaming_download');
 Route::get('/upload/get_file',[UploadController::class, 'getFile'])->name('upload.get_file');
+
+Route::get('/eager_loading',[EagerLoadingController::class, 'index'])->name('eager_loading.index');
