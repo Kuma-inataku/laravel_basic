@@ -8,10 +8,8 @@ use App\Models\User;
 class EagerLoadingController extends Controller
 {
     public function index() {
-        $users = User::all();
-        // foreach($users as $user) {
-        //     $userAttribute = $user->userAttribute;
-        // }
+        $users = User::with('userAttribute')->get();
+        // $users = User::all();
         $data = [
             'users' => $users,
         ];
