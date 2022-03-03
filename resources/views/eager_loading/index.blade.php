@@ -11,12 +11,13 @@
 <table>
     <tr>
         <th>id</th>
-        <th>body</th>
+        <th>name</th>
+        <th>age</th>
     </tr>
-    @foreach($comments as $item)
+    @foreach($users as $user)
     <tr>
-        <td>{{$item->id}}</td>
-        <td>{{$item->body}}</td>
+        <td>{{$user->id}}</td>
+        <td>{{$user->name}}</td>
     </tr>
     @endforeach
 </table>

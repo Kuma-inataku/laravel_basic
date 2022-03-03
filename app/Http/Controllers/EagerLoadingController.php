@@ -9,6 +9,9 @@ class EagerLoadingController extends Controller
 {
     public function index() {
         $users = User::all();
+        // foreach($users as $user) {
+        //     $userAttribute = $user->userAttribute;
+        // }
         $data = [
             'users' => $users,
         ];
