@@ -16,6 +16,7 @@
         "stechstudio/laravel-zipstream": "^4.7"
     },
     "require-dev": {
+        "beyondcode/laravel-query-detector": "^1.6",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
