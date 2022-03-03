@@ -4,7 +4,7 @@
 
 @section('menubar')
     @parent
-    コメントページ
+    N+1発生
 @endsection
 
 @section('content')
