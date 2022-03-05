@@ -19,25 +19,34 @@ class EloquentCustomerPointEventTest extends TestCase
      */
     public function register()
     {
-        $customerId = 1;
-        EloquentCustomer::factory()->create(
-            [
-                'id' => $customerId,
-            ]
-        );
+        // $this->seed();
+        $param = [
+            'name' => 'hanako',
+            'mail' => 'hanako@flower.jp',
+            'age' => 34,
+        ];
+        $this->assertDatabaseHas('people',$param);
+        // dd('test');
 
-        $event = new PointEvent($customerId, '加算イベント', 100, CarbonImmutable::create(2018, 8, 4, 12, 34, 56));
-        $sut = new EloquentCustomerPointEvent();
-        $sut->register($event);
+        // $customerId = 1;
+        // EloquentCustomer::factory()->create(
+        //     [
+        //         'id' => $customerId,
+        //     ]
+        // );
 
-        $this->assertDatabaseHas(
-            'customer_point_events',
-            [
-                'customer_id' => $customerId,
-                'event' => $event->getEvent(),
-                'point' => $event->getPoint(),
-                'created_at' => $event->getCreatedAt(),
-            ]
-        );
+        // $event = new PointEvent($customerId, '加算イベント', 100, CarbonImmutable::create(2018, 8, 4, 12, 34, 56));
+        // $sut = new EloquentCustomerPointEvent();
+        // $sut->register($event);
+
+        // $this->assertDatabaseHas(
+        //     'customer_point_events',
+        //     [
+        //         'customer_id' => $customerId,
+        //         'event' => $event->getEvent(),
+        //         'point' => $event->getPoint(),
+        //         'created_at' => $event->getCreatedAt(),
+        //     ]
+        // );
     }
 }
