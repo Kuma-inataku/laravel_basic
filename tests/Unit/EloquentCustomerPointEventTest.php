@@ -19,15 +19,6 @@ class EloquentCustomerPointEventTest extends TestCase
      */
     public function register()
     {
-        // $this->seed();
-        // $param = [
-        //     'name' => 'hanako',
-        //     'mail' => 'hanako@flower.jp',
-        //     'age' => 34,
-        // ];
-        // $this->assertDatabaseHas('people',$param);
-        // dd('test');
-
         $customerId = 1;
         EloquentCustomer::factory()->create(
             [
@@ -36,6 +27,7 @@ class EloquentCustomerPointEventTest extends TestCase
         );
 
         $event = new PointEvent($customerId, '加算イベント', 100, CarbonImmutable::create(2018, 8, 4, 12, 34, 56));
+        
         $sut = new EloquentCustomerPointEvent();
         $sut->register($event);
 

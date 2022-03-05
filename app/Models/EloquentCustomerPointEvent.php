@@ -18,7 +18,7 @@ class EloquentCustomerPointEvent extends Model
     public function register(PointEvent $event)
     {
         $new = $this->newInstance();
-        $new->cunstomer_id = $event->getCustomerId();
+        $new->customer_id = $event->getCustomerId();
         $new->event = $event->getEvent();
         $new->point = $event->getPoint();
         $new->created_at = $event->getCreatedAt()->toDateTimeString();
