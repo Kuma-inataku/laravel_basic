@@ -12,6 +12,7 @@ class EloquentCustomerPointEvent extends Model
 {
     // use HasFactory;
     use RefreshDatabase;
+
     protected $table = 'customer_point_events';
     public $timestamps = false;
 

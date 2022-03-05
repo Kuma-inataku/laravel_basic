@@ -5,7 +5,7 @@ namespace Tests\Unit;
 // use PHPUnit\Framework\TestCase;
 use App\Models\EloquentCustomer;
 use App\Models\EloquentCustomerPoint;
-use App\Models\EloquentCustomerPointEvent;
+// use App\Models\EloquentCustomerPointEvent;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

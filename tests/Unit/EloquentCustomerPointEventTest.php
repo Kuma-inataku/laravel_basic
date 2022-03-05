@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-// use PHPUnit\Framework\TestCase;
 use App\Models\EloquentCustomer;
 use App\Models\EloquentCustomerPointEvent;
 use App\Models\PointEvent;
