@@ -18,6 +18,8 @@ use App\Http\Controllers\EagerLoadingController;
 use App\Models\Content;
 use App\Models\Post;
 
+use App\Http\Actions\AddPointAction;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -124,3 +126,5 @@ Route::get('/eager_loading',[EagerLoadingController::class, 'index'])->name('eag
 Route::get('/api/ping', function() {
     return response()->json(['message' => 'pong']);
 });
+Route::put('/customers/add_point', AddPointAction::class);
+
