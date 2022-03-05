@@ -15,12 +15,12 @@ class CreateCustomerPointEventsTable extends Migration
     {
         Schema::create('customer_point_events', function (Blueprint $table) {
             $table->id();
-            $table->int('customer_id');
+            // ×...note: https://qiita.com/Masahiro111/items/71e645923003d9a10f9e 
+            $table->unsignedBigInteger('customer_id');
             $table->string('event');
-            $table->int('point');
-            // $table->timestamps();
+            $table->integer('point');
             $table->timestamp('created_at')->useCurrent()->nullable();
-            $table->foreign('customer_id')->references('id')->on('customer');
+            $table->foreign('customer_id')->references('id')->on('customers');
         });
     }
 

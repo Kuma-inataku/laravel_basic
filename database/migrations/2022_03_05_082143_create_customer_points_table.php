@@ -14,8 +14,9 @@ class CreateCustomerPointsTable extends Migration
     public function up()
     {
         Schema::create('customer_points', function (Blueprint $table) {
-            $table->id('customer_id');
-            $table->int('point');
+            $table->id();
+            $table->unsignedBigInteger('customer_id');
+            $table->integer('point');
             $table->foreign('customer_id')->references('id')->on('customers'); //外部キー参照
             $table->timestamps();
         });
