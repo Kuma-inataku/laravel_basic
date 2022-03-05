@@ -121,3 +121,6 @@ Route::get('/upload/zip_streaming_download',[UploadController::class, 'zipStream
 Route::get('/upload/get_file',[UploadController::class, 'getFile'])->name('upload.get_file');
 
 Route::get('/eager_loading',[EagerLoadingController::class, 'index'])->name('eager_loading.index');
+Route::get('/api/ping', function() {
+    return response()->json(['message' => 'pong']);
+});
