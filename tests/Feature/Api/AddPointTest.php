@@ -123,4 +123,30 @@ class AddPointTest extends TestCase
         $this->assertArrayHasKey('customer_id', $errors);
         $this->assertArrayHasKey('add_point', $errors);
     }
+
+    /**
+     * @test
+     * @dataProvider dataPovider_put_add_point_add_point事前条件エラー
+     */
+    public function put_add_point_add_point事前条件エラー(int $addPoint)
+    {
+        $response = $this->putJson('/api/customers/add_point', [
+            'customer_id' => self::CUSTOMER_ID,
+            'add_point' => $addPoint,
+        ]);
+
+        $response->assertStatus(400);
+        $expected = [
+            'message' => 'add_point should be equals or greater than 1',
+        ];
+        $response->assertExactJson($expected);
+    }
+
+    public function dataPovider_put_add_point_add_point事前条件エラー(): array
+    {
+        return [
+            '1回目' => [0],
+            '2回目' => [-1],
+        ];
+    }
 }

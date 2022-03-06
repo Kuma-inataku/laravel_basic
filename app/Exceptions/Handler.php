@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use Symfony\Component\HttpFoundation\Response;
+// use App\Exceptions\PreconditionException;
 
 class Handler extends ExceptionHandler
 {
@@ -35,10 +36,7 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        // $this->reportable(function (Throwable $e) {
-        //     //
-        // });
-        $this->reportable(function (PreconditionException $e) {
+        $this->renderable(function (PreconditionException $e) {
             return response()->json(
                 ['message' => trans($e->getMessage())],
                 Response::HTTP_BAD_REQUEST
