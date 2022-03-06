@@ -149,4 +149,21 @@ class AddPointTest extends TestCase
             '2回目' => [-1],
         ];
     }
+
+    /**
+     * @test
+     */
+    public function put_add_point_customer_id事前条件エラー()
+    {
+        $response = $this->putJson('/api/customers/add_point', [
+            'customer_id' => 999,
+            'add_point' => 10,
+        ]);
+
+        $response->assertStatus(400);
+        $expected = [
+            'message' => 'customers.id:999 does not exists',
+        ];
+        $response->assertExactJson($expected);
+    }
 }
