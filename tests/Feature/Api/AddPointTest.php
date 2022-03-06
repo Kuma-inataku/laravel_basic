@@ -67,8 +67,44 @@ class AddPointTest extends TestCase
                 'customer_id' => self::CUSTOMER_ID,
                 'event' => 'ADD_POINT',
                 'point' => 10,
-                'created_at' => CarbonImmutable::now()->toDayDateTimeString(),
+                // 'created_at' => CarbonImmutable::now()->toDayDateTimeString(),
+                'created_at' => CarbonImmutable::now(),
             ]
         );
+    }
+
+    /**
+     * @test
+     */
+    public function put_add_point_バリデーションエラー()
+    {
+        $response = $this->putJson('/api/customers/add_point',[]);
+
+        $response->assertStatus(422);
+        $expected = [
+            'message' => 'The given data was invalid.',
+            'errors' => [
+                'customer_id' => ['The customer id field is required.'],
+                'add_point' => ['The add point field is required.'],
+            ],
+        ];
+        $response->assertExactJson($expected);
+    }
+
+    /**
+     * @test
+     */
+    public function put_add_point_バリデーションエラー_errorsのみ検証()
+    {
+        $response = $this->putJson('/api/customers/add_point',[]);
+
+        $response->assertStatus(422);
+        $expected = [
+            'errors' => [
+                'customer_id' => ['The customer id field is required.'],
+                'add_point' => ['The add point field is required.'],
+            ],
+        ];
+        $response->assertJson($expected);
     }
 }
