@@ -126,5 +126,5 @@ Route::get('/eager_loading',[EagerLoadingController::class, 'index'])->name('eag
 Route::get('/api/ping', function() {
     return response()->json(['message' => 'pong']);
 });
-Route::put('/customers/add_point', AddPointAction::class);
+Route::put('/api/customers/add_point', AddPointAction::class);
 
