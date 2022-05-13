@@ -13,11 +13,31 @@ use Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use App\Http\Pagination\MyPaginator;
+use App\Models\User;
 
 class HelloController extends Controller
 {
+    // /**
+    //  * index.
+    //  *
+    //  * @param Request $request
+    //  * @return \Illuminate\Contracts\View\View
+    //  */
     public function index(Request $request)
     {
+        $user = User::firstOrFail();
+        if (is_null($user)) {
+            abort(404);
+        }
+        $userAttribute = $user->userAttribute;
+        
+
+        if (false) {
+            echo $hoge;
+        }
+        // if ($request) {
+        //     echo $huga;
+        // }
         $re = Person::get();
         $fields = Person::get()->fields();
         $data = [
