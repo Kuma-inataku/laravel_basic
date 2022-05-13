@@ -15,6 +15,7 @@ use App\Http\Controllers\MailSendController;
 use App\Http\Controllers\StorageController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\EagerLoadingController;
+use App\Http\Controllers\HttpClientController;
 use App\Models\Content;
 use App\Models\Post;
 
@@ -127,4 +128,6 @@ Route::get('/api/ping', function() {
     return response()->json(['message' => 'pong']);
 });
 Route::put('/api/customers/add_point', AddPointAction::class);
+
+Route::get('/http_client',[HttpClientController::class, 'index'])->name('http_client.index');
 
