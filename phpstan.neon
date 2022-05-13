@@ -5,13 +5,14 @@ parameters:
 
     paths:
         # - app
-        - app/Http/Controllers
+        # - app/Http/Controllers
+        - app/Http/Controllers/HelloController.php
 
     # The level 9 is the highest level
-    level: 8
+    level: 0
 
     ignoreErrors:
-        - '#PHPDoc tag @var#'
+        # - '#PHPDoc tag @var#'
 
     excludePaths:
         - ./*/*/FileToBeExcluded.php

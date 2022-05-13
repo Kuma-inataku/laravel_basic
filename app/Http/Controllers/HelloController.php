@@ -25,19 +25,18 @@ class HelloController extends Controller
     //  */
     public function index(Request $request)
     {
-        $user = User::firstOrFail();
-        if (is_null($user)) {
-            abort(404);
-        }
-        $userAttribute = $user->userAttribute;
-        
-
-        if (false) {
-            echo $hoge;
-        }
-        // if ($request) {
-        //     echo $huga;
+        $user = User::first();
+        // $user = User::firstOrFail();
+        // if (is_null($user)) {
+        //     abort(404);
         // }
+        $userAttribute = $user->userAttribute;
+        // if (false) {
+        //     echo $hoge;
+        // }
+        if ($request) {
+            echo $huga;
+        }
         $re = Person::get();
         $fields = Person::get()->fields();
         $data = [
